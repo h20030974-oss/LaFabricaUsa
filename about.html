@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>قصتنا | La FabricaUsa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <nav class="navbar">
     <div class="nav-container">
         <a href="index.html" class="logo">LA FABRICA<span>USA</span></a>
@@ -16,17 +18,55 @@
             <li><a href="about.html" class="active">قصتنا</a></li>
             <li><a href="contact.html">تواصل معنا</a></li>
         </ul>
-        <div class="nav-right" onclick="toggleCart(true)" style="cursor:pointer"><i class="fas fa-shopping-bag"></i><span id="cartCount">0</span></div>
+        <div class="nav-right">
+            <div class="cart-icon" onclick="toggleCart(true)">
+                <i class="fas fa-shopping-bag"></i>
+                <span id="cartCount">0</span>
+            </div>
+        </div>
     </div>
 </nav>
 
-<section class="container" style="padding:100px 20px; text-align:center">
-    <h1 style="font-family:'Oswald'; font-size:60px; color:var(--accent)">نحن نؤمن بالأداء.</h1>
-    <p style="max-width:700px; margin:30px auto; font-size:18px; color:var(--text-muted)">تأسست La FabricaUsa لتكون الوجهة الأولى لكل رياضي يبحث عن الجودة والاحترافية في المكملات الغذائية.</p>
+<section class="nav-container" style="padding: 120px 20px; text-align: center;">
+    <h1 style="font-family: 'Oswald'; font-size: clamp(50px, 8vw, 90px); margin-bottom: 30px;">نحن نؤمن بالأداء الصافي</h1>
+    <div style="max-width: 800px; margin: 0 auto; color: var(--text-muted); font-size: 20px; line-height: 1.8; text-align: justify;">
+        <p>بدأت رحلة <b>La FabricaUsa</b> بشغف عميق للرياضة والأداء البدني العالي. نحن نؤمن بأن المكملات الغذائية ليست مجرد مساحيق، بل هي أدوات دقيقة تساعدك على تجاوز حدودك الجينية وتحقيق أهدافك.</p>
+        <br>
+        <p>نحن نحرص على جلب أفضل المنتجات من المصادر العالمية الموثوقة لضمان حصول رياضيينا في المغرب على الجودة التي يستحقونها. هدفنا هو بناء مجتمع رياضي قوي يعتمد على العلم والنتائج الملموسة.</p>
+    </div>
 </section>
 
+<!-- الفوتر مكرر لضمان وصول العميل للمعلومات دائماً -->
+<footer class="footer-about">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <h2>LA FABRICA<span>USA</span></h2>
+            <p>الجودة والأداء هما ركيزتنا الأساسية.</p>
+        </div>
+        <div class="footer-contact">
+            <h3>تواصل معنا</h3>
+            <p><i class="fas fa-phone"></i> 0603852896</p>
+            <p><i class="fas fa-envelope"></i> hamzakhalyfah223@gmail.com</p>
+        </div>
+    </div>
+</footer>
+
 <!-- السلة الجانبية (ضرورية لضمان عمل السلة من أي صفحة) -->
-<div id="cartDrawer" class="cart-drawer">... (نفس الكود) ...</div>
+<div id="cartDrawer" class="cart-drawer">
+    <div style="display:flex; justify-content:space-between; align-items:center">
+        <h2 style="font-family:'Oswald'">سلة التسوق</h2>
+        <i class="fas fa-times" onclick="toggleCart(false)" style="cursor:pointer; font-size:24px"></i>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div style="border-top:1px solid #222; padding-top:20px">
+        <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:bold">
+            <span>المجموع:</span><span id="cartTotal" style="color:var(--accent)">0 MAD</span>
+        </div>
+        <input type="text" id="cNameCart" placeholder="الاسم الكامل" class="nike-input">
+        <input type="text" id="cCityCart" placeholder="المدينة" class="nike-input">
+        <button class="btn-nike" onclick="sendOrder()">تأكيد الطلب</button>
+    </div>
+</div>
 
 <script src="main.js"></script>
 </body>
