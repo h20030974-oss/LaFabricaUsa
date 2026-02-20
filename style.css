@@ -1,51 +1,96 @@
+/* 
+   PROJECT: La FabricaUsa - Nike Elite Edition
+   STYLE: Dark Mode / Minimalist / High Performance
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Oswald:wght@700&display=swap');
 
 :root {
     --bg: #000000;
     --card: #111111;
-    --accent: #ffdf00; /* الأصفر المميز لـ Nike */
+    --accent: #ffdf00; /* الأصفر الذهبي للأثمنة */
     --text: #ffffff;
     --text-muted: #8d8d8d;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; direction: rtl; }
+/* 1. إصلاحات العرض الأساسية (التي طلبتها) */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    scroll-behavior: smooth;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+    background-attachment: fixed;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    direction: rtl; /* يدعم اللغة العربية */
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    -webkit-tap-highlight-color: transparent; 
+}
 
 /* Navbar */
 .navbar {
-    height: 70px; background: rgba(0,0,0,0.95); display: flex; align-items: center;
-    position: sticky; top: 0; z-index: 2000; border-bottom: 1px solid #222; backdrop-filter: blur(10px);
+    height: 70px; 
+    background: rgba(0,0,0,0.8); 
+    display: flex; 
+    align-items: center;
+    position: sticky; 
+    top: 0; 
+    z-index: 2000; 
+    border-bottom: 1px solid #222; 
+    backdrop-filter: blur(15px);
 }
-.nav-container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
-.logo { font-family: 'Oswald'; font-size: 28px; font-weight: 700; letter-spacing: -1.5px; color: #fff; text-decoration: none; }
-.logo span { color: var(--text-muted); font-weight: 400; }
+
+.nav-container { 
+    width: 100%; 
+    max-width: 1400px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.logo { 
+    font-family: 'Oswald'; 
+    font-size: 28px; 
+    font-weight: 700; 
+    font-style: italic; 
+    letter-spacing: -1.5px; 
+    color: #fff; 
+    text-decoration: none; 
+}
+.logo span { color: var(--text-muted); font-style: normal; }
 
 .nav-links { display: flex; list-style: none; gap: 20px; }
 .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.3s; }
 .nav-links a.active { color: var(--accent); }
 
 .nav-right { display: flex; align-items: center; gap: 15px; }
-.search-box { background: #1a1a1a; padding: 8px 15px; border-radius: 30px; display: flex; align-items: center; border: 1px solid #333; }
+.search-box { background: #111; padding: 8px 15px; border-radius: 30px; display: flex; align-items: center; border: 1px solid #333; }
 .search-box input { background: none; border: none; outline: none; color: white; margin-right: 10px; width: 120px; font-size: 13px; text-align: right; }
+
 .cart-icon { position: relative; cursor: pointer; font-size: 20px; }
 #cartCount { position: absolute; top: -10px; right: -10px; background: var(--accent); color: #000; font-size: 11px; font-weight: 900; padding: 2px 6px; border-radius: 50%; }
 
 /* Hero Section & 3D Cube */
-.hero {
-    height: 80vh; display: flex; align-items: center; justify-content: center;
-    background: radial-gradient(circle at center, #111 0%, #000 100%); position: relative;
-}
-.hero-content { text-align: center; z-index: 10; }
+.hero { height: 85vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+.hero-content { z-index: 10; padding: 0 20px; }
+.hero-content h1 { font-family: 'Oswald'; font-style: italic; font-size: clamp(45px, 10vw, 100px); line-height: 0.9; margin-bottom: 20px; text-transform: uppercase; }
+
 .scene { width: 160px; height: 160px; perspective: 600px; margin: 0 auto 40px; }
-.cube {
-    width: 100%; height: 100%; position: relative; transform-style: preserve-3d;
-    animation: rotateCube 12s infinite linear;
-}
+.cube { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; animation: rotateCube 15s infinite linear; }
 .cube-face {
     position: absolute; width: 160px; height: 160px; border: 2px solid var(--accent);
-    background: rgba(255, 223, 0, 0.03); display: flex; align-items: center; justify-content: center;
-    font-family: 'Oswald'; font-size: 24px; color: var(--accent); font-weight: bold;
+    background: rgba(255, 223, 0, 0.05); display: flex; align-items: center; justify-content: center;
+    font-family: 'Oswald'; font-size: 22px; color: var(--accent); font-weight: bold; box-shadow: 0 0 15px rgba(255,223,0,0.1);
 }
 .front  { transform: rotateY(  0deg) translateZ(80px); }
 .back   { transform: rotateY(180deg) translateZ(80px); }
@@ -54,47 +99,104 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
 .top    { transform: rotateX( 90deg) translateZ(80px); }
 .bottom { transform: rotateX(-90deg) translateZ(80px); }
 
-@keyframes rotateCube {
-    from { transform: rotateX(0deg) rotateY(0deg); }
-    to { transform: rotateX(360deg) rotateY(360deg); }
-}
+@keyframes rotateCube { from { transform: rotateX(0deg) rotateY(0deg); } to { transform: rotateX(360deg) rotateY(360deg); } }
 
-/* Products */
+/* Products Grid & Cards */
+.section-title { font-family: 'Oswald'; font-style: italic; font-size: 35px; padding: 40px 20px 20px; max-width: 1400px; margin: 0 auto; color: var(--accent); }
 .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; padding: 20px; max-width: 1400px; margin: 0 auto; }
-.product-card { background: var(--card); padding: 15px; border-radius: 8px; cursor: pointer; transition: var(--transition); border: 1px solid transparent; }
-.product-card:hover { border-color: #444; transform: translateY(-5px); }
-.img-box { background: #1a1a1a; aspect-ratio: 1/1; overflow: hidden; border-radius: 4px; }
-.img-box img { width: 100%; height: 100%; object-fit: cover; }
-.product-info h3 { font-family: 'Oswald'; font-size: 18px; margin-top: 15px; text-transform: uppercase; }
-.price { color: var(--accent); font-weight: 900; font-size: 22px; margin-top: 5px; }
 
-/* Modals & Cart Drawer */
-.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 3000; overflow-y: auto; padding: 20px; }
-.modal-content { background: #000; max-width: 900px; margin: 40px auto; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 30px; border: 1px solid #222; border-radius: 12px; position: relative; }
-.cart-drawer { position: fixed; top: 0; left: -100%; width: 350px; height: 100%; background: #000; border-right: 1px solid #222; z-index: 4000; transition: 0.4s; padding: 25px; display: flex; flex-direction: column; }
-.cart-drawer.open { left: 0; }
+.product-card { background: var(--card); padding: 15px; border-radius: 12px; cursor: pointer; transition: var(--transition); border: 1px solid #222; }
+.product-card:hover { 
+    border-color: var(--accent); 
+    transform: translateY(-10px); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6); 
+}
+.img-box { background: #0a0a0a; aspect-ratio: 1/1; overflow: hidden; border-radius: 8px; }
+.img-box img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+.product-card:hover img { transform: scale(1.1) rotate(1deg); filter: brightness(1.1); }
 
-/* Footer */
-.footer-about { background: #080808; padding: 80px 20px; border-top: 1px solid #222; margin-top: 60px; }
-.footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: right; }
-.footer-brand h2 { font-family: 'Oswald'; font-size: 32px; margin-bottom: 20px; }
-.footer-contact h3 { font-family: 'Oswald'; color: var(--accent); margin-bottom: 20px; text-transform: uppercase; }
-.footer-contact p { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; color: #ccc; }
-.footer-contact a { color: #ccc; text-decoration: none; transition: 0.3s; }
-.footer-contact a:hover { color: var(--accent); }
+.product-info h3 { font-family: 'Oswald'; font-style: italic; font-size: 18px; margin-top: 15px; text-transform: uppercase; }
+.price { color: var(--accent); font-weight: 900; font-size: 22px; margin-top: 5px; text-shadow: 0 0 10px rgba(255,223,0,0.2); }
+
+/* Modal Nike Style */
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 3000; overflow-y: auto; padding: 20px; }
+.modal-content { 
+    background: #000; max-width: 900px; margin: 40px auto; display: grid; 
+    grid-template-columns: 1fr 1fr; gap: 30px; padding: 30px; border: 1px solid #222; 
+    border-radius: 12px; position: relative; 
+}
+.close-modal { position: absolute; right: 20px; top: 10px; font-size: 35px; cursor: pointer; color: var(--text-muted); }
+
+/* Cart Drawer */
+.cart-drawer { 
+    position: fixed; top: 0; right: -100%; width: 360px; height: 100%; 
+    background: #000; border-left: 1px solid #222; z-index: 4000; 
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding: 25px; display: flex; flex-direction: column; 
+}
+.cart-drawer.open { right: 0; }
+.cart-items { flex: 1; overflow-y: auto; margin: 20px 0; }
 
 /* Buttons & Inputs */
-.btn-nike { background: white; color: black; padding: 16px; border: none; font-weight: 900; width: 100%; cursor: pointer; text-transform: uppercase; border-radius: 4px; transition: 0.3s; }
-.btn-nike:hover { background: var(--accent); }
-.nike-input { width: 100%; padding: 12px; margin-bottom: 10px; background: #111; border: 1px solid #333; color: white; border-radius: 4px; outline: none; text-align: right; }
+.btn-nike { 
+    background: white; color: black; padding: 18px; border: none; font-weight: 900; 
+    width: 100%; cursor: pointer; text-transform: uppercase; border-radius: 4px; 
+    transition: 0.3s; position: relative; overflow: hidden;
+}
+.btn-nike:hover { background: var(--accent); transform: scale(0.98); }
 
-/* Description Accordion */
-.desc-toggle { cursor: pointer; background: #111; padding: 12px; border-radius: 4px; margin: 15px 0; display: flex; justify-content: space-between; font-weight: bold; }
+.nike-input { 
+    width: 100%; padding: 12px; margin-bottom: 10px; background: #111; 
+    border: 1px solid #333; color: white; border-radius: 4px; outline: none; text-align: right; 
+}
+
+/* Footer / About Section */
+.footer-about { background: #080808; padding: 80px 20px; border-top: 1px solid #222; margin-top: 60px; }
+.footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed; bottom: 20px; right: 20px; background: #25d366; 
+    color: white; width: 60px; height: 60px; border-radius: 50%; 
+    display: flex; align-items: center; justify-content: center; 
+    font-size: 30px; z-index: 5000; box-shadow: 0 10px 25px rgba(0,0,0,0.5); transition: 0.3s;
+}
+.whatsapp-float:hover { transform: scale(1.1); }
+
+/* 2. التحسينات النهائية للعرض (Responsive Fixes) */
+
+/* ضمان عدم خروج الصور عن حدود البطاقات */
+img { max-width: 100%; height: auto; }
+
+/* للهواتف الصغيرة جداً (مثل iPhone SE) */
+@media (max-width: 400px) {
+    .cart-drawer {
+        width: 100% !important;
+        padding: 15px;
+    }
+    .logo { font-size: 22px; }
+    .hero-content h1 { font-size: 40px; }
+}
+
+/* تعديل المودال للجوال */
+@media (max-width: 768px) {
+    .modal-content { 
+        grid-template-columns: 1fr; 
+        margin: 10px auto !important; 
+        width: 95% !important; 
+        max-height: 90vh; 
+        overflow-y: auto; 
+        padding: 20px;
+    }
+    .nav-links { display: none; } /* يفضل إخفاؤها في الجوال لترك مساحة للوجو والسلة */
+    .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 10px; }
+    .footer-grid { text-align: center; }
+}
+
+/* التحكم في الكمية */
+.qty-wrapper { display: flex; align-items: center; gap: 15px; margin: 20px 0; }
+.qty-btn { background: #222; color: white; border: 1px solid #444; width: 35px; height: 35px; cursor: pointer; border-radius: 4px; }
+
+/* تفاصيل المنتج (Accordion) */
+.desc-toggle { cursor: pointer; background: #111; padding: 12px; border-radius: 4px; display: flex; justify-content: space-between; font-weight: bold; font-size: 14px; margin-bottom: 5px; }
 .desc-content { display: none; padding: 10px; color: var(--text-muted); font-size: 13px; border-top: 1px solid #222; }
 .desc-content.show { display: block; }
-
-@media (max-width: 768px) {
-    .modal-content { grid-template-columns: 1fr; padding: 20px; }
-    .cart-drawer { width: 100%; }
-    .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-}
