@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La FabricaUsa | Premium Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">LA FABRICA<span>USA</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">الرئيسية</a></li>
+            <li><a href="shop.html">المتجر</a></li>
+            <li><a href="about.html">قصتنا</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="search-box"><i class="fas fa-search"></i><input type="text" id="searchInput" placeholder="بحث..."></div>
+            <div class="cart-icon" onclick="toggleCart(true)"><i class="fas fa-shopping-bag"></i><span id="cartCount">0</span></div>
+        </div>
+    </div>
+</nav>
+
+<div id="productsGrid" class="products-grid"></div>
+
+<!-- Cart Drawer -->
+<div id="cartDrawer" class="cart-drawer">
+    <div style="display:flex; justify-content:space-between; align-items:center">
+        <h2 style="font-family:'Oswald'">سلة التسوق</h2>
+        <i class="fas fa-times" onclick="toggleCart(false)" style="cursor:pointer; font-size:24px"></i>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div style="border-top:1px solid #222; padding-top:20px">
+        <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:bold">
+            <span>المجموع:</span><span id="cartTotal" style="color:var(--accent)">0 MAD</span>
+        </div>
+        <input type="text" id="cNameCart" placeholder="الاسم الكامل" class="nike-input">
+        <input type="text" id="cCityCart" placeholder="المدينة" class="nike-input">
+        <button class="btn-nike" onclick="sendOrder()">تأكيد الطلب (واتساب)</button>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img id="m-img" src="" style="width:100%; border-radius:4px">
+        <div>
+            <h2 id="m-name" style="font-family:'Oswald'; font-size:32px"></h2>
+            <p id="m-price" class="price" style="font-size:26px; margin: 10px 0;"></p>
+            <div class="qty-wrapper">
+                <button class="qty-btn" onclick="updateQty(-1)">-</button>
+                <span id="qtyVal">1</span>
+                <button class="qty-btn" onclick="updateQty(1)">+</button>
+            </div>
+            <div class="desc-toggle" onclick="toggleDesc()">تفاصيل المنتج <i class="fas fa-chevron-down"></i></div>
+            <div id="m-desc" class="desc-content"></div>
+            <button class="btn-nike" onclick="addToCart()">أضف للسلة</button>
+        </div>
+    </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

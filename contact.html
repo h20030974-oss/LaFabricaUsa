@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تواصل معنا | La FabricaUsa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">LA FABRICA<span>USA</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="shop.html">المتجر</a></li>
+            <li><a href="about.html">قصتنا</a></li>
+            <li><a href="contact.html" class="active">تواصل معنا</a></li>
+        </ul>
+        <div class="nav-right" onclick="toggleCart(true)" style="cursor:pointer"><i class="fas fa-shopping-bag"></i><span id="cartCount">0</span></div>
+    </div>
+</nav>
+
+<section class="container" style="padding:80px 20px; max-width:600px; margin:0 auto">
+    <h1 style="font-family:'Oswald'; font-size:40px; margin-bottom:20px">تواصل معنا</h1>
+    <input type="text" placeholder="الاسم" class="nike-input">
+    <textarea placeholder="رسالتك" class="nike-input" style="height:150px"></textarea>
+    <button class="btn-nike">إرسال عبر الواتساب</button>
+</section>
+
+<!-- السلة الجانبية -->
+<div id="cartDrawer" class="cart-drawer">... (نفس الكود) ...</div>
+
+<script src="main.js"></script>
+</body>
+</html>

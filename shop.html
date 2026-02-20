@@ -1,0 +1,37 @@
+<!-- استخدم نفس كود index.html بالكامل وقم بتعديل كلاس الـ Active في النافبار -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المتجر | La FabricaUsa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">LA FABRICA<span>USA</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="shop.html" class="active">المتجر</a></li>
+            <li><a href="about.html">قصتنا</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="search-box"><i class="fas fa-search"></i><input type="text" id="searchInput" placeholder="بحث..."></div>
+            <div class="cart-icon" onclick="toggleCart(true)"><i class="fas fa-shopping-bag"></i><span id="cartCount">0</span></div>
+        </div>
+    </div>
+</nav>
+
+<div class="container" style="padding: 40px 20px;"><h1 style="font-family:'Oswald'; font-size:40px">المتجر الكامل</h1></div>
+<div id="productsGrid" class="products-grid"></div>
+
+<!-- كود السلة والمودال (نفسه في index.html) -->
+<div id="cartDrawer" class="cart-drawer">... (انسخ نفس الجزء من index) ...</div>
+<div id="productModal" class="modal">... (انسخ نفس الجزء من index) ...</div>
+
+<script src="main.js"></script>
+</body>
+</html>

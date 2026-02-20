@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قصتنا | La FabricaUsa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">LA FABRICA<span>USA</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="shop.html">المتجر</a></li>
+            <li><a href="about.html" class="active">قصتنا</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+        <div class="nav-right" onclick="toggleCart(true)" style="cursor:pointer"><i class="fas fa-shopping-bag"></i><span id="cartCount">0</span></div>
+    </div>
+</nav>
+
+<section class="container" style="padding:100px 20px; text-align:center">
+    <h1 style="font-family:'Oswald'; font-size:60px; color:var(--accent)">نحن نؤمن بالأداء.</h1>
+    <p style="max-width:700px; margin:30px auto; font-size:18px; color:var(--text-muted)">تأسست La FabricaUsa لتكون الوجهة الأولى لكل رياضي يبحث عن الجودة والاحترافية في المكملات الغذائية.</p>
+</section>
+
+<!-- السلة الجانبية (ضرورية لضمان عمل السلة من أي صفحة) -->
+<div id="cartDrawer" class="cart-drawer">... (نفس الكود) ...</div>
+
+<script src="main.js"></script>
+</body>
+</html>
