@@ -1,24 +1,23 @@
 const products = [
-    { id: 1, name: "ISO100 HYDROLYZED", price: 1300, img: "https://images.unsplash.com/photo-1593095191071-82b0fdf983a1?w=800", desc: "أقوى بروتين هيدروليزيد للامتصاص السريع وعضلات صافية." },
-    { id: 2, name: "CREATINE PURE 100%", price: 300, img: "https://images.unsplash.com/photo-1594400202073-77d34bc65ee8?w=800", desc: "كرياتين نقي لزيادة القوة البدنية والتحمل في التمرين." },
-    { id: 3, name: "GOLD CASEIN", price: 900, img: "https://images.unsplash.com/photo-1617649387527-75ad0df5ec4c?w=800", desc: "بروتين بطيء الامتصاص مثالي للاستخدام قبل النوم." }
+    { id: 1, name: "Whey Isolate Elite", price: 1300, img: "https://images.unsplash.com/photo-1593095191071-82b0fdf983a1?w=800", desc: "نقاء تام لسرعة بناء العضلات والاستشفاء." },
+    { id: 2, name: "Creatine Micronized", price: 300, img: "https://images.unsplash.com/photo-1594400202073-77d34bc65ee8?w=800", desc: "زيادة القوة البدنية والتحمل في أصعب التمارين." },
+    { id: 3, name: "Casein Recovery Night", price: 900, img: "https://images.unsplash.com/photo-1617649387527-75ad0df5ec4c?w=800", desc: "بروتين بطيء الامتصاص مثالي لفترة النوم." }
 ];
 
-let cart = JSON.parse(localStorage.getItem('nikeCart')) || [];
+let cart = [];
 let currentProduct = null;
 let currentQty = 1;
 
 function init() {
-    renderProducts(products);
-    updateCartUI();
+    render();
 }
 
-function renderProducts(items) {
+function render() {
     const grid = document.getElementById('productsGrid');
-    if (!grid) return;
-    grid.innerHTML = items.map(p => `
+    if(!grid) return;
+    grid.innerHTML = products.map(p => `
         <div class="product-card" onclick="openModal(${p.id})">
-            <div class="img-box"><img src="${p.img}" loading="lazy"></div>
+            <div class="img-box"><img src="${p.img}" alt="${p.name}"></div>
             <div class="product-info">
                 <h3>${p.name}</h3>
                 <p class="price">${p.price} MAD</p>
@@ -34,68 +33,59 @@ function openModal(id) {
     document.getElementById('m-name').innerText = currentProduct.name;
     document.getElementById('m-price').innerText = currentProduct.price + " MAD";
     document.getElementById('m-desc').innerText = currentProduct.desc;
-    document.getElementById('qtyVal').innerText = currentQty;
-    document.getElementById('productModal').style.display = 'block';
-    document.body.style.overflow = 'hidden';
+    document.getElementById('modal').style.display = 'flex';
 }
 
 function updateQty(val) {
-    let next = currentQty + val;
-    if (next >= 1 && next <= 10) {
-        currentQty = next;
-        document.getElementById('qtyVal').innerText = currentQty;
+    if(currentQty + val >= 1 && currentQty + val <= 10) {
+        currentQty += val;
+        document.getElementById('qty').innerText = currentQty;
         document.getElementById('m-price').innerText = (currentProduct.price * currentQty) + " MAD";
     }
 }
 
 function addToCart() {
-    const existing = cart.find(item => item.id === currentProduct.id);
-    if (existing) existing.qty = Math.min(existing.qty + currentQty, 10);
-    else cart.push({ ...currentProduct, qty: currentQty });
-    save(); closeModal(); toggleCart(true);
+    const existing = cart.find(i => i.id === currentProduct.id);
+    if(existing) existing.qty += currentQty;
+    else cart.push({...currentProduct, qty: currentQty});
+    
+    updateCart();
+    closeModal();
+    toggleCart(true);
 }
 
-function updateCartUI() {
+function updateCart() {
     const container = document.getElementById('cartItems');
-    if (!container) return;
     container.innerHTML = cart.map((item, index) => `
-        <div style="display:flex; gap:10px; margin-bottom:15px; background:#111; padding:10px; border-radius:4px; align-items:center">
-            <img src="${item.img}" style="width:50px; height:50px; object-fit:cover; border-radius:4px">
+        <div style="display:flex; gap:15px; margin-bottom:20px; background:#f8fafc; padding:15px; border-radius:15px; align-items:center">
+            <img src="${item.img}" style="width:60px; height:60px; object-image:contain">
             <div style="flex:1">
-                <h4 style="font-size:12px">${item.name}</h4>
-                <p style="color:var(--accent); font-size:14px; font-weight:bold">${item.price * item.qty} MAD (x${item.qty})</p>
+                <h4 style="font-size:14px">${item.name}</h4>
+                <p style="color:var(--primary); font-weight:800">${item.price * item.qty} MAD (x${item.qty})</p>
             </div>
-            <i class="fas fa-trash" onclick="removeFromCart(${index})" style="cursor:pointer; color:red; font-size:12px"></i>
+            <button onclick="removeFromCart(${index})" style="border:none; color:red; cursor:pointer; background:none">حذف</button>
         </div>
     `).join('');
     
-    const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-    const cartTotal = document.getElementById('cartTotal');
-    const cartCount = document.getElementById('cartCount');
-    if(cartTotal) cartTotal.innerText = total + " MAD";
-    if(cartCount) cartCount.innerText = cart.reduce((sum, item) => sum + item.qty, 0);
+    const total = cart.reduce((s, i) => s + (i.price * i.qty), 0);
+    document.getElementById('cartTotal').innerText = total + " MAD";
+    document.getElementById('cartCount').innerText = cart.length;
 }
 
-function removeFromCart(index) { cart.splice(index, 1); save(); }
-function save() { localStorage.setItem('nikeCart', JSON.stringify(cart)); updateCartUI(); }
+function removeFromCart(i) { cart.splice(i, 1); updateCart(); }
+
 function toggleCart(show) { document.getElementById('cartDrawer').classList.toggle('open', show); }
-function closeModal() { document.getElementById('productModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
+function closeModal() { document.getElementById('modal').style.display = 'none'; }
 
-function sendOrder() {
-    const name = document.getElementById('cNameCart').value;
-    const city = document.getElementById('cCityCart').value;
-    if (cart.length === 0 || !name || !city) return alert("يرجى ملئ البيانات واختيار منتجات.");
-
-    let msg = `*طلب جديد - LA FABRICAUSA*%0A%0A`;
-    cart.forEach(item => msg += `• ${item.name} (x${item.qty}) = ${item.price * item.qty} MAD%0A`);
-    const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-    msg += `%0A*المجموع الكلي:* ${total} MAD%0A%0A*الزبون:* ${name}%0A*المدينة:* ${city}`;
+function checkout() {
+    const name = document.getElementById('uName').value;
+    const city = document.getElementById('uCity').value;
+    if(!name || !city) return alert("المرجو ملئ البيانات");
+    
+    let msg = `*طلب جديد - La FabricaUsa*%0A%0A`;
+    cart.forEach(i => msg += `- ${i.name} (x${i.qty})%0A`);
+    msg += `%0A*المجموع:* ${document.getElementById('cartTotal').innerText}%0A*الزبون:* ${name}%0A*المدينة:* ${city}`;
     window.open(`https://wa.me/212603852896?text=${msg}`, '_blank');
 }
-
-document.getElementById('searchInput')?.addEventListener('input', (e) => {
-    const term = e.target.value.toLowerCase();
-    renderProducts(products.filter(p => p.name.toLowerCase().includes(term)));
-});
 
 init();

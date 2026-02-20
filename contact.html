@@ -8,39 +8,41 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <nav class="navbar">
     <div class="nav-container">
-        <a href="index.html" class="logo">LA FABRICA<span>USA</span></a>
+        <a href="index.html" class="logo">FABRICA<span>USA</span></a>
         <ul class="nav-links">
             <li><a href="index.html">الرئيسية</a></li>
             <li><a href="shop.html">المتجر</a></li>
             <li><a href="about.html">قصتنا</a></li>
             <li><a href="contact.html" class="active">تواصل معنا</a></li>
         </ul>
-        <div class="nav-right" onclick="toggleCart(true)" style="cursor:pointer"><i class="fas fa-shopping-bag" style="font-size:20px"></i><span id="cartCount">0</span></div>
     </div>
 </nav>
 
-<section class="nav-container" style="padding:80px 20px; max-width:600px; margin:0 auto">
-    <h1 style="font-family:'Oswald'; font-size:40px; margin-bottom:30px">تواصل معنا</h1>
-    <div class="footer-contact" style="background:var(--card); padding:30px; border-radius:12px; margin-bottom:20px">
-        <p style="margin-bottom:15px"><i class="fas fa-phone"></i> 0603852896</p>
-        <p style="margin-bottom:15px"><i class="fas fa-envelope"></i> hamzakhalyfah223@gmail.com</p>
-        <p><i class="fab fa-instagram"></i> @lafabricausa</p>
+<section class="nav-container" style="padding: 80px 20px; max-width: 700px; text-align: center;">
+    <h1 style="font-size: 40px; margin-bottom: 20px;">دعنا نتحدث</h1>
+    <p style="color: var(--text-light); margin-bottom: 40px;">فريقنا متاح دائماً لمساعدتك في اختيار المكمل الأنسب لأهدافك.</p>
+
+    <div style="background: white; padding: 40px; border-radius: 30px; box-shadow: var(--shadow);">
+        <form id="contactForm">
+            <input type="text" id="userName" placeholder="الاسم الكامل" class="input-glass">
+            <textarea id="userMsg" placeholder="رسالتك..." class="input-glass" style="height: 150px;"></textarea>
+            <button type="submit" class="btn-main">إرسال عبر الواتساب</button>
+        </form>
     </div>
-    <button class="btn-nike" onclick="window.open('https://wa.me/212603852896')">تحدث معنا مباشرة عبر واتساب</button>
 </section>
 
-<!-- السلة الجانبية -->
-<div id="cartDrawer" class="cart-drawer">
-    <div style="display:flex; justify-content:space-between; align-items:center"><h2>السلة</h2><i class="fas fa-times" onclick="toggleCart(false)" style="cursor:pointer; font-size:24px"></i></div>
-    <div id="cartItems" class="cart-items"></div>
-    <div style="border-top:1px solid #222; padding-top:20px">
-        <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:bold"><span>المجموع:</span><span id="cartTotal">0 MAD</span></div>
-        <button class="btn-nike" onclick="sendOrder()">تأكيد الطلب</button>
-    </div>
-</div>
-
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('userName').value;
+        const msg = document.getElementById('userMsg').value;
+        const text = `*رسالة تواصل من الموقع*%0A%0A*الاسم:* ${name}%0A*الرسالة:* ${msg}`;
+        window.open(`https://wa.me/212603852896?text=${text}`, '_blank');
+    });
+</script>
 <script src="main.js"></script>
 </body>
 </html>
