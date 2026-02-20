@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <nav class="navbar">
     <div class="nav-container">
         <a href="index.html" class="logo">LA FABRICA<span>USA</span></a>
@@ -19,85 +18,33 @@
             <li><a href="contact.html">تواصل معنا</a></li>
         </ul>
         <div class="nav-right">
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" placeholder="بحث عن مكمل...">
-            </div>
-            <div class="cart-icon" onclick="toggleCart(true)">
-                <i class="fas fa-shopping-bag"></i>
-                <span id="cartCount">0</span>
-            </div>
+            <div class="search-box"><i class="fas fa-search"></i><input type="text" id="searchInput" placeholder="بحث..."></div>
+            <div class="cart-icon" onclick="toggleCart(true)"><i class="fas fa-shopping-bag"></i><span id="cartCount">0</span></div>
         </div>
     </div>
 </nav>
 
-<section class="nav-container" style="padding: 60px 20px;">
-    <h1 style="font-family: 'Oswald'; font-size: 50px; color: var(--accent); text-transform: uppercase;">جميع المنتجات</h1>
-    <p style="color: var(--text-muted); font-size: 18px; margin-bottom: 30px;">اختر من بين أفضل المكملات الغذائية العالمية لتعزيز أدائك.</p>
-    
-    <!-- شبكة المنتجات (تُملأ تلقائياً من main.js) -->
+<section class="nav-container" style="padding:60px 20px">
+    <h1 style="font-family:'Oswald'; font-style:italic; font-size:50px; color:var(--accent)">ALL PRODUCTS</h1>
     <div id="productsGrid" class="products-grid"></div>
 </section>
 
-<!-- الفوتر الاحترافي (About Section) -->
-<footer class="footer-about">
-    <div class="footer-grid">
-        <div class="footer-brand">
-            <h2>LA FABRICA<span>USA</span></h2>
-            <p>نحن نوفر أجود المكملات الغذائية للرياضيين الطموحين. جودة أصلية وتوصيل سريع لجميع مدن المغرب.</p>
-            <div style="display: flex; gap: 15px; margin-top: 20px;">
-                <a href="https://www.instagram.com/lafabricausa?igsh=dThtemowdTJobzh6" target="_blank" style="color: var(--accent); font-size: 24px;"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-        <div class="footer-contact">
-            <h3>تواصل معنا</h3>
-            <p><i class="fas fa-phone"></i> 0603852896</p>
-            <p><i class="fas fa-envelope"></i> <a href="mailto:hamzakhalyfah223@gmail.com">hamzakhalyfah223@gmail.com</a></p>
-            <p><i class="fas fa-truck"></i> توصيل سريع لجميع المدن</p>
-        </div>
-    </div>
-    <div style="text-align: center; margin-top: 40px; color: #333; border-top: 1px solid #111; padding-top: 20px;">
-        &copy; 2024 La FabricaUsa. Designed by Hamza Khalyfah.
-    </div>
-</footer>
-
-<!-- سلة التسوق الجانبية (Cart Drawer) -->
+<!-- التكرار الضروري للسلة والمودال لضمان عمل الجافاسكريبت في كل الصفحات -->
 <div id="cartDrawer" class="cart-drawer">
-    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid #222; padding-bottom: 15px;">
-        <h2 style="font-family:'Oswald'">سلة التسوق</h2>
-        <i class="fas fa-times" onclick="toggleCart(false)" style="cursor:pointer; font-size:24px"></i>
-    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center"><h2>السلة</h2><i class="fas fa-times" onclick="toggleCart(false)" style="cursor:pointer; font-size:24px"></i></div>
     <div id="cartItems" class="cart-items"></div>
     <div style="border-top:1px solid #222; padding-top:20px">
-        <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:bold">
-            <span>المجموع:</span><span id="cartTotal" style="color:var(--accent)">0 MAD</span>
-        </div>
-        <input type="text" id="cNameCart" placeholder="الاسم الكامل" class="nike-input">
-        <input type="text" id="cCityCart" placeholder="المدينة" class="nike-input">
-        <button class="btn-nike" onclick="sendOrder()">تأكيد الطلب (واتساب)</button>
+        <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:bold"><span>المجموع:</span><span id="cartTotal">0 MAD</span></div>
+        <input type="text" id="cNameCart" placeholder="الاسم الكامل" class="nike-input"><input type="text" id="cCityCart" placeholder="المدينة" class="nike-input">
+        <button class="btn-nike" onclick="sendOrder()">تأكيد الطلب</button>
     </div>
 </div>
 
-<!-- نافذة تفاصيل المنتج (Modal) -->
 <div id="productModal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <img id="m-img" src="" style="width:100%; border-radius:8px; background: #111;">
-        <div>
-            <h2 id="m-name" style="font-family:'Oswald'; font-size:32px; text-transform:uppercase"></h2>
-            <p id="m-price" class="price" style="font-size:28px; margin: 15px 0;"></p>
-            <div class="qty-wrapper">
-                <button class="qty-btn" onclick="updateQty(-1)">-</button>
-                <span id="qtyVal" style="font-weight:bold; width: 30px; text-align: center;">1</span>
-                <button class="qty-btn" onclick="updateQty(1)">+</button>
-            </div>
-            <div class="desc-toggle" onclick="toggleDesc()">تفاصيل المنتج <i class="fas fa-chevron-down"></i></div>
-            <div id="m-desc" class="desc-content"></div>
-            <button class="btn-nike" onclick="addToCart()">أضف للسلة</button>
-        </div>
-    </div>
+    <div class="modal-content"><span class="close-modal" onclick="closeModal()">&times;</span><img id="m-img" src="" style="width:100%; border-radius:8px"><div><h2 id="m-name"></h2><p id="m-price" class="price"></p><div class="qty-wrapper"><button onclick="updateQty(-1)" class="qty-btn">-</button><span id="qtyVal">1</span><button onclick="updateQty(1)" class="qty-btn">+</button></div><p id="m-desc"></p><button class="btn-nike" onclick="addToCart()">أضف للسلة</button></div></div>
 </div>
 
+<a href="https://wa.me/212603852896" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 <script src="main.js"></script>
 </body>
 </html>

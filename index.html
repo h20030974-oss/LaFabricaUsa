@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La FabricaUsa | المكملات الرياضية الاحترافية</title>
+    <title>La FabricaUsa | الرئيسية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <nav class="navbar">
     <div class="nav-container">
         <a href="index.html" class="logo">LA FABRICA<span>USA</span></a>
         <ul class="nav-links">
             <li><a href="index.html" class="active">الرئيسية</a></li>
             <li><a href="shop.html">المتجر</a></li>
+            <li><a href="about.html">قصتنا</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
         </ul>
         <div class="nav-right">
             <div class="search-box"><i class="fas fa-search"></i><input type="text" id="searchInput" placeholder="بحث..."></div>
@@ -25,88 +26,62 @@
 
 <header class="hero">
     <div class="hero-content">
-        <div class="scene">
-            <div class="cube">
-                <div class="cube-face front">LA FABRICA</div>
-                <div class="cube-face back">POWER</div>
-                <div class="cube-face right">USA</div>
-                <div class="cube-face left">PURE</div>
-                <div class="cube-face top">MOVE</div>
-                <div class="cube-face bottom">CORE</div>
+        <div class="hero-visual">
+            <div class="performance-core">
+                <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+                <div class="core-sphere"></div>
             </div>
         </div>
-        <h1 style="font-family:'Oswald'; letter-spacing:-2px">JUST DO IT.<br>BETTER.</h1>
-        <p>ارفع مستوى أدائك مع أفضل المكملات الغذائية المختارة بعناية.</p>
-        <button class="btn-nike" style="width:auto; padding:15px 40px" onclick="window.location.href='shop.html'">تسوق الآن</button>
+        <h1 style="font-style:italic">ENGINEERED FOR THE ELITE.</h1>
+        <p>أفضل المكملات الغذائية العالمية لرفع أدائك الرياضي إلى القمة.</p>
+        <button class="btn-nike" style="width:auto; padding:15px 50px" onclick="window.location.href='shop.html'">تسوق الآن</button>
     </div>
 </header>
 
-<h2 class="nav-container" style="font-family:'Oswald'; font-size:40px; margin-top:50px">أفضل المبيعات</h2>
+<h2 class="nav-container" style="font-family:'Oswald'; font-style:italic; font-size:40px; margin-top:40px">أفضل المبيعات</h2>
 <div id="productsGrid" class="products-grid"></div>
 
-<!-- الفوتر الاحترافي (About) -->
 <footer class="footer-about">
     <div class="footer-grid">
         <div class="footer-brand">
             <h2>LA FABRICA<span>USA</span></h2>
-            <p>نحن نوفر أجود المكملات الغذائية للرياضيين الطموحين. جودة أصلية وتوصيل سريع لجميع مدن المغرب.</p>
-            <div style="display:flex; gap:15px; margin-top:20px">
-                <a href="https://www.instagram.com/lafabricausa?igsh=dThtemowdTJobzh6" target="_blank" style="color:var(--accent); font-size:24px"><i class="fab fa-instagram"></i></a>
-            </div>
+            <p>الجودة والأداء هما ركيزتنا الأساسية. توصيل سريع لجميع مدن المغرب.</p>
+            <div style="margin-top:20px"><a href="https://www.instagram.com/lafabricausa?igsh=dThtemowdTJobzh6" target="_blank" style="color:var(--accent); font-size:24px"><i class="fab fa-instagram"></i></a></div>
         </div>
         <div class="footer-contact">
             <h3>تواصل معنا</h3>
             <p><i class="fas fa-phone"></i> 0603852896</p>
-            <p><i class="fas fa-envelope"></i> <a href="mailto:hamzakhalyfah223@gmail.com">hamzakhalyfah223@gmail.com</a></p>
-            <p><i class="fas fa-truck"></i> توصيل سريع وآمن لجميع المدن</p>
-        </div>
-        <div class="footer-contact">
-            <h3>روابط سريعة</h3>
-            <p><a href="shop.html">المتجر</a></p>
-            <p><a href="about.html">قصتنا</a></p>
-            <p><a href="contact.html">تواصل معنا</a></p>
+            <p><i class="fas fa-envelope"></i> hamzakhalyfah223@gmail.com</p>
         </div>
     </div>
-    <div style="text-align:center; margin-top:50px; color:#444; border-top:1px solid #111; padding-top:20px">&copy; 2024 La FabricaUsa.</div>
 </footer>
 
-<!-- سلة التسوق الجانبية -->
 <div id="cartDrawer" class="cart-drawer">
-    <div style="display:flex; justify-content:space-between; align-items:center">
-        <h2 style="font-family:'Oswald'">سلة التسوق</h2>
-        <i class="fas fa-times" onclick="toggleCart(false)" style="cursor:pointer; font-size:24px"></i>
-    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center"><h2>السلة</h2><i class="fas fa-times" onclick="toggleCart(false)" style="cursor:pointer; font-size:24px"></i></div>
     <div id="cartItems" class="cart-items"></div>
     <div style="border-top:1px solid #222; padding-top:20px">
-        <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:bold">
-            <span>المجموع:</span><span id="cartTotal" style="color:var(--accent)">0 MAD</span>
-        </div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:bold"><span>المجموع:</span><span id="cartTotal">0 MAD</span></div>
         <input type="text" id="cNameCart" placeholder="الاسم الكامل" class="nike-input">
         <input type="text" id="cCityCart" placeholder="المدينة" class="nike-input">
-        <button class="btn-nike" onclick="sendOrder()">تأكيد الطلب عبر واتساب</button>
+        <button class="btn-nike" onclick="sendOrder()">تأكيد الطلب</button>
     </div>
 </div>
 
-<!-- المودال -->
 <div id="productModal" class="modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closeModal()">&times;</span>
         <img id="m-img" src="" style="width:100%; border-radius:8px">
         <div>
-            <h2 id="m-name" style="font-family:'Oswald'; font-size:32px; text-transform:uppercase"></h2>
-            <p id="m-price" class="price" style="font-size:28px; margin:10px 0"></p>
-            <div class="qty-wrapper">
-                <button class="qty-btn" onclick="updateQty(-1)">-</button>
-                <span id="qtyVal">1</span>
-                <button class="qty-btn" onclick="updateQty(1)">+</button>
-            </div>
-            <div class="desc-toggle" onclick="toggleDesc()">تفاصيل المنتج <i class="fas fa-chevron-down"></i></div>
-            <div id="m-desc" class="desc-content"></div>
+            <h2 id="m-name" style="font-family:'Oswald'; font-size:32px"></h2>
+            <p id="m-price" class="price" style="font-size:28px; margin: 10px 0;"></p>
+            <div class="qty-wrapper"><button onclick="updateQty(-1)" class="qty-btn">-</button><span id="qtyVal">1</span><button onclick="updateQty(1)" class="qty-btn">+</button></div>
+            <p id="m-desc" style="color:var(--text-muted); margin-bottom:20px"></p>
             <button class="btn-nike" onclick="addToCart()">أضف للسلة</button>
         </div>
     </div>
 </div>
 
+<a href="https://wa.me/212603852896" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 <script src="main.js"></script>
 </body>
 </html>

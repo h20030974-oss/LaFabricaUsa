@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <nav class="navbar">
     <div class="nav-container">
         <a href="index.html" class="logo">LA FABRICA<span>USA</span></a>
@@ -18,59 +17,30 @@
             <li><a href="about.html">قصتنا</a></li>
             <li><a href="contact.html" class="active">تواصل معنا</a></li>
         </ul>
-        <div class="nav-right">
-            <div class="cart-icon" onclick="toggleCart(true)">
-                <i class="fas fa-shopping-bag"></i>
-                <span id="cartCount">0</span>
-            </div>
-        </div>
+        <div class="nav-right" onclick="toggleCart(true)" style="cursor:pointer"><i class="fas fa-shopping-bag" style="font-size:20px"></i><span id="cartCount">0</span></div>
     </div>
 </nav>
 
-<section class="nav-container" style="padding: 80px 20px; max-width: 600px; margin: 0 auto;">
-    <h1 style="font-family: 'Oswald'; font-size: 50px; margin-bottom: 20px;">تواصل معنا</h1>
-    <p style="color: var(--text-muted); margin-bottom: 40px;">هل لديك أي استفسار حول المكملات أو طلبك؟ نحن هنا للإجابة عليك.</p>
-
-    <form id="contactForm" style="display: grid; gap: 15px;">
-        <input type="text" id="userName" placeholder="الاسم الكامل" class="nike-input" required>
-        <input type="email" id="userEmail" placeholder="البريد الإلكتروني" class="nike-input" required>
-        <textarea id="userMsg" placeholder="رسالتك أو استفسارك..." class="nike-input" style="height: 150px; resize: none;" required></textarea>
-        <button type="submit" class="btn-nike">إرسال عبر واتساب <i class="fab fa-whatsapp"></i></button>
-    </form>
-</section>
-
-<footer class="footer-about" style="margin-top: 50px;">
-    <div style="text-align: center; color: #555;">
-        <p><i class="fas fa-phone"></i> 0603852896</p>
-        <p><i class="fas fa-envelope"></i> hamzakhalyfah223@gmail.com</p>
+<section class="nav-container" style="padding:80px 20px; max-width:600px; margin:0 auto">
+    <h1 style="font-family:'Oswald'; font-size:40px; margin-bottom:30px">تواصل معنا</h1>
+    <div class="footer-contact" style="background:var(--card); padding:30px; border-radius:12px; margin-bottom:20px">
+        <p style="margin-bottom:15px"><i class="fas fa-phone"></i> 0603852896</p>
+        <p style="margin-bottom:15px"><i class="fas fa-envelope"></i> hamzakhalyfah223@gmail.com</p>
+        <p><i class="fab fa-instagram"></i> @lafabricausa</p>
     </div>
-</footer>
+    <button class="btn-nike" onclick="window.open('https://wa.me/212603852896')">تحدث معنا مباشرة عبر واتساب</button>
+</section>
 
 <!-- السلة الجانبية -->
 <div id="cartDrawer" class="cart-drawer">
-    <div style="display:flex; justify-content:space-between; align-items:center">
-        <h2 style="font-family:'Oswald'">سلة التسوق</h2>
-        <i class="fas fa-times" onclick="toggleCart(false)" style="cursor:pointer; font-size:24px"></i>
-    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center"><h2>السلة</h2><i class="fas fa-times" onclick="toggleCart(false)" style="cursor:pointer; font-size:24px"></i></div>
     <div id="cartItems" class="cart-items"></div>
     <div style="border-top:1px solid #222; padding-top:20px">
-        <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:bold">
-            <span>المجموع:</span><span id="cartTotal" style="color:var(--accent)">0 MAD</span>
-        </div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:bold"><span>المجموع:</span><span id="cartTotal">0 MAD</span></div>
         <button class="btn-nike" onclick="sendOrder()">تأكيد الطلب</button>
     </div>
 </div>
 
-<script>
-    // كود مخصص لصفحة التواصل لإرسال رسالة نصية بسيطة
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const name = document.getElementById('userName').value;
-        const msg = document.getElementById('userMsg').value;
-        const finalMsg = `*رسالة تواصل من الموقع*%0A%0A*الاسم:* ${name}%0A*الرسالة:* ${msg}`;
-        window.open(`https://wa.me/212603852896?text=${finalMsg}`, '_blank');
-    });
-</script>
 <script src="main.js"></script>
 </body>
 </html>
